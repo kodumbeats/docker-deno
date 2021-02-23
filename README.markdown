@@ -1,3 +1,10 @@
+Forked to build multi-arch containers for deno < v1.6.3, joined by [manifest](https://www.docker.com/blog/multi-platform-docker-builds/)
+### custom builds
+
+- deno v1.2.0 + rustyv8 v0.6.0 (WIP)
+- deno v1.5.0 + rustyv8 v0.12.0 (md5 410ab3d6fd05bc8812e7ab9337ecd368 arm64)
+- deno v1.6.0 + rustyv8 v0.14.0 (md5 e3e7b3c796ea96fc151707f07ceaa36e arm64)
+
 # Deno ARM64
 
 I put this together because there are no ARM images for Docker [yet](https://github.com/denoland/deno/issues/1846#issuecomment-725165778).

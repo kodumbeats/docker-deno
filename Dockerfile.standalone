@@ -1,6 +1,9 @@
 FROM ubuntu:20.04
 
-COPY ./deno /bin/deno
+ARG DENO_VERSION
+ARG DENO_ARCH
+
+COPY ./${DENO_VERSION}/${DENO_ARCH}/deno /bin/deno
 RUN chmod 755 /bin/deno
 
 RUN addgroup --gid 1993 deno
@@ -11,5 +14,9 @@ RUN chown deno:deno /deno-dir/
 ENV DENO_DIR /deno-dir/
 ENV DENO_INSTALL_ROOT /usr/local
 
-ENTRYPOINT ["/bin/deno"]
+COPY ./entry.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["run", "https://deno.land/std/examples/welcome.ts"]
+
